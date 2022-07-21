@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadowpizza</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/logo.png">
+
+</head>
+
+<body onload="render()">
+    <div class="overflowX">
+        <!-- NavList -->
+        <div class="navFlex">
+            <div class="menuLeftFlex">
+                <img id="arrowImageNormal" class="arrowImage" src="img/arrow.png" alt="">
+                <img id="arrowImageResponsive" onclick="closeBasketResponsive()" class="arrowImage" src="img/arrow.png"
+                    alt="">
+                <img class="pizzaImage" src="img/pizza.png" alt="">
+                <a id="businessName" class="textFormLeft" href="#"><b>Shadowpizza</b>.de</a>
+            </div>
+            <div>
+                <a class="textFormMiddle" href="#">Hamburg</a>
+            </div>
+            <div class="menuRightFlex">
+                <div class="flagImageBorder"><img class="flagImage"
+                        src="http://www.nationalflaggen.de/zeige-flagge-39250.html"></div>
+                <img id="menuNormal" class="menuImage" src="img/menu.png" alt="">
+            </div>
+        </div>
+        <div class="mainFlex">
+            <div class="leftBody">
+                <!-- PizzaImage -->
+                <div class="pizzaImageBasketFlex">
+                    <div class="bodyImageSize">
+                        <img src="img/pizza.jpg" alt="">
+                    </div>
+                    <!-- Absolut Logo -->
+                    <div class="logoFlex">
+                        <img class="logoForm" src="img/logo.png" alt="">
+                    </div>
+                </div>
+
+
+
+                <div class="headlineBodyFlex">
+                    <div class="fontHeadline">
+                        <span class="fontHeadlineForm">Shadowpizza</span>
+                        <div class="valuationHealine">
+                            <img src="img/star.png" alt="">
+                            <img src="img/star.png" alt="">
+                            <img src="img/star.png" alt="">
+                            <img src="img/star.png" alt="">
+                            <img src="img/star.png" alt="">
+                            <a href="">(1250 Bewertungen)</a>
+                        </div>
+                        <div class="infoHeadline">
+                            <div class="imageFlex">
+                                <img src="img/clock.png" alt="">
+                                <span>Ab 16:00 Uhr</span>
+                            </div>
+                            <div class="imageFlex">
+                                <img class="carImage marginLeft" src="img/car.png" alt="">
+                                <span>1.00€</span>
+                            </div>
+                            <div class="imageFlex marginLeft">
+                                <img src="img/cart.png" alt="">
+                                <span>Min. 10.00€</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imageBorderFlex">
+                        <img class="imageBorder" src="img/info.png" alt="">
+                        <img id="likeImage" class="imageBorder" onclick="likeImageLike()" src="img/heart_empty.png"
+                            alt="">
+                        <img id="likeImage2" class="imageBorder dNone" onclick="likeImageDislike()"
+                            src="img/heart_full.png" alt="">
+                    </div>
+                </div>
+
+                <div id="scrollline" class="bg">
+                    <div class="menuListFlex">
+                        <img src="img/lupe.png" alt="">
+                        <a href="#scrollToPizza">Pizza</a>
+                        <a href="#scrollToSnacks">Snacks</a>
+                        <a href="#scrollToExtras">Extras</a>
+                        <a href="#scrollToGetraenke">Getränke</a>
+                    </div>
+                </div>
+
+                <!-- Dynamic Main Content -->
+                <div class="bgCategory">
+                    <span id="scrollToPizza"></span>
+                    <span>Pizza</span>
+                </div>
+                <div id="pizzaContent"></div>
+                <div class="bgCategory">
+                    <span id="scrollToSnacks"></span>
+                    <span>Snacks</span>
+                </div>
+                <div id="snacksContent"></div>
+                <div class="bgCategory">
+                    <span id="scrollToExtras"></span>
+                    <span>Extras</span>
+                </div>
+                <div id="extraContent"></div>
+                <div class="bgCategory">
+                    <span id="scrollToGetraenke"></span>
+                    <span>Getränke </span>
+                </div>
+                <div id="getraenkeContent"></div>
+            </div>
+            <!-- Basket -->
+            <div onclick="showBasketResponsive()" class="clickBasket">
+                <div>
+                    <h1>Warenkorb</h1>
+                </div>
+                <div id="counter" class="counterDesign">
+                    <span>0</span>
+                </div>
+
+            </div>
+            <div class="basketFlex" id="completeBasket">
+
+                <h1>Warenkorb</h1>
+                <!--                 <img  id="basketXmark" src="img/x-mark.png" alt=""> -->
+                <div id="basket">
+                    <!-- Dynamic Basket -->
+                </div>
+                <div id="basketInfo">
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
