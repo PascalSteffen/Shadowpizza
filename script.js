@@ -154,9 +154,10 @@ function render() {
 
 
 /**
- * Rendert alle JSON Objekte
+ * render all JSON-Objects
  * @param {*} menuList - JSON Objekt
  * @returns 
+ * 
  */
 function renderAll(menuList) {
     let menuPrice = menuList['price'];
@@ -225,8 +226,7 @@ function renderGetraenke() {
 
 
 /** 
- * 
- *  Rendert den Warenkorb
+ *  render the basket
  * 
  */
 function renderBasket() {
@@ -245,9 +245,10 @@ function renderBasket() {
 
 
 /**
- * 
- * @param {*} i - Wird an die Function "renderBasket()" übergeben.
+ * generate the basket HTML-Content.
+ * @param {*} i
  * @returns 
+ * 
  */
 function showBasket(i) {
     let subtotalResult = basketPrice[i] * basketQuantity[i];
@@ -295,9 +296,10 @@ function showBasket(i) {
 
 
 /**
- * Zeigt die Warenkorb-Info
+ * show the shopping cart.
+ * 
  */
-function showBasketInfo() { // Der Text der angezeigt wird, wenn noch nichts im Warenkorb hinterlegt ist.
+function showBasketInfo() {
     let basketInfo = document.getElementById("basketInfo");
     if (basketName.length == 0) {
         basketInfo.innerHTML = generateBasketInfoHTMLIf();
@@ -346,7 +348,8 @@ function generateBasketInfoHTMLElse() {
 
 
 /** 
- *  Stellt den Entgültigen Preis da.
+ *  show the finsh sum in the basket.
+ * 
  */
 function finishSum() {
     let subtotalPrice = 0;
@@ -359,12 +362,13 @@ function finishSum() {
 
 
 /**
- *  Changed die Preisvariation.
- * @param {*} subtotalPrice - Wird an die Function "finishSum()" übergeben.
+ *  changed the price variation.
+ * @param {*} subtotalPrice
+ * 
  */
 function dynamicChange(subtotalPrice) {
     let deliveryCosts = 2.00;
-    let finishPrice = subtotalPrice + deliveryCosts // Endpreis mit Lieferkosten
+    let finishPrice = subtotalPrice + deliveryCosts // finish sum with delivery costs
 
     if (subtotalPrice >= 9) {
         document.getElementById("showBasketText").style.display = "none";
@@ -379,10 +383,11 @@ function dynamicChange(subtotalPrice) {
 
 
 /**
+ * generate and render all prices.
+ * @param {*} subtotalPrice
+ * @param {*} deliveryCosts
+ * @param {*} finishPrice
  * 
- * @param {*} subtotalPrice - Rendert den subtotalPrice und übergibt den Wert an die Function "dynamicChange()".
- * @param {*} deliveryCosts - Rendert die deliveryCosts und übergibt den Wert an die Function "dynamicChange()".
- * @param {*} finishPrice  - Rendert den finishPrice und übergibt den Wert an die Function "dynamicChange()".
  */
 function priceRender(subtotalPrice, deliveryCosts, finishPrice) {
     let subtotalSum = document.getElementById("subtotalSum");
@@ -434,16 +439,16 @@ function renderTotalSumToPay(totalSumToPay, finishPrice) {
 
 
 /**
- * 
- * @param {*} name - Der Name aus dem jeweiligen JSON-Objekt wird an Function "renderAll()" übergeben.
- * @param {*} price - Der Preis aus dem jeweiligen JSON-Objekt wird an Function "renderAll()" übergeben.
+ * push the new object into basket.
+ * @param {*} name 
+ * @param {*} price
  */
 function addToBasket(name, price) {
-    let match = basketName.includes(name); // Array gibt keine doppelten Werte mehr aus. (Examp. 1x Pizza Margherita 6.60€) (1x Pizza Margherita 6.60€)
+    let match = basketName.includes(name); // Array no longer returns duplicate values. (Examp. 1x Pizza Margherita 6.60€) (1x Pizza Margherita 6.60€)
 
-    if (!match) { // Wenn das Array noch nicht vorhanden ist geht er rein. Wenn das Array schon vorhanden ist, geht er in else rein. 
-        basketName.push(name); // Pusht den Namen des JSON-Objekt.
-        basketPrice.push(price); // Pusht den Price des JSON-Objekt.
+    if (!match) { 
+        basketName.push(name); 
+        basketPrice.push(price);
         basketQuantity.push(1);
         counterBasket.push(1);
         remarkList.push([]);
@@ -464,8 +469,9 @@ function addToBasket(name, price) {
 
 
 /**
- * Stellt im Warenkorb das "+" da und pust jeweils den Preis und die Menge.
- * @param {*} i - Wird an die Function "showBasket()" übergeben.
+ * Put the "+" in the shopping cart and push the price and quantity.
+ * @param {*} i
+ * 
  */
 function addOne(i) {
     basketQuantity[i]++;
@@ -478,12 +484,12 @@ function addOne(i) {
 
 
 /**
- * Stellt im Warenkorb das "-" da und spliced jeweils den Preis und die Menge.
- * @param {*} i - Wird an die Function "showBasket()" übergeben.
+ * Put the "-" in the shopping cart and splice the price and quantity.
+ * @param {*} i
  */
 function deleteOne(i) {
-    let index = basketQuantity[i]; // Definiert die aktuelle Anzahl des basketQuantity Array.
-    if (index == 1) { // Wenn Index == 1 - splice jeweils ein Element aus den Arrays.
+    let index = basketQuantity[i]; // Defines the current count of the basketQuantity array.
+    if (index == 1) {
         basketName.splice(i, 1);
         basketPrice.splice(i, 1);
         basketQuantity.splice(i, 1);
@@ -507,8 +513,9 @@ function deleteOne(i) {
 
 
 /**
- * Öffnet bei Klick auf "Anmerkung hinzufügen" eine weitere Handlungsmöglichkeit.
- * @param {*} i - Wird an die Function "showBasket()" übergeben.
+ * Clicking on "Add comment" opens another option for action.
+ * @param {*} i
+ * 
  */
 function openRemark(i) {
     document.getElementById(`inputs${i}`).classList.remove("dNone");
@@ -516,8 +523,9 @@ function openRemark(i) {
 
 
 /**
- * Fügt eine Anmerkung der jeweiligen gerenderten Sache im Warenkorb hinzu.
- * @param {*} i - Wird an die Function "showBasket()" übergeben.
+ * Adds an annotation of each rendered thing in the cart.
+ * @param {*} i
+ * 
  */
 function addRemark(i) {
     let inputField = document.getElementById(`inputField${i}`).value;
@@ -536,8 +544,9 @@ function addRemark(i) {
 
 
 /**
- * Löscht die jeweilige Anmerkung.
- * @param {*} i - Wird an die Function "renderBasket()" übergeben.
+ * Deletes the annotation.
+ * @param {*} i
+ * 
  */
 function removeRemark(i) {
     remarkList.splice(i, 1);
@@ -553,6 +562,7 @@ function removeRemark(i) {
 
 /**
  * Like und Disslike Function
+ * 
  */
 function likeImageLike() {
     document.getElementById("likeImage2").classList.remove("dNone");
@@ -570,6 +580,7 @@ function likeImageDislike() {
 
 /**
  * OpenResonsive Menu
+ * 
  */
 function showBasketResponsive() {
     document.getElementById("completeBasket").classList.add("basketFlexResponsive");
@@ -587,6 +598,7 @@ function closeBasketResponsive() {
 
 /**
  * Counter Function
+ * 
  */
 function counter() {
     let counterElement = document.getElementById("counter");
@@ -606,6 +618,7 @@ function counter() {
 
 /**
  * Localstorage
+ * 
  */
 function saveToLocalStorage() {
     let basketNameAsText = JSON.stringify(basketName);
@@ -636,5 +649,4 @@ function loadFromLocalStorage() {
         remarkList = JSON.parse(remarkListAsText);
         counterBasket = JSON.parse(counterBasketAsText);
     }
-
 }
